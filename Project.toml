@@ -3,11 +3,14 @@ uuid = "2c6f6ba7-1a3c-4d31-8511-d336c09a6ae6"
 authors = ["Roy <rwang013@uottawa.ca> and contributors"]
 version = "0.1.0"
 
-[extras]
-Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+[deps]
+LightGraphs = "093fc24a-ae57-5d10-9952-331d41423f4d"
 
 [compat]
 julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
 test = ["Test"]
