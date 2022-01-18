@@ -145,7 +145,7 @@ P_cost0 = hz2ppmfunc.(U_cost0)
 y_cost0 = y
 
 
-band_inds = getcostinds(exp_info, P_cost0)
+band_inds = NMRSpecifyRegions.getcostinds(exp_info, P_cost0)
 
 U_cost = U_cost0[band_inds]
 P_cost = P_cost0[band_inds]
