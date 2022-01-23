@@ -140,13 +140,15 @@ end
 function getcostinds(exp_info::ExperimentInfoType{T}, P_cost0) where T
 
     band_inds = Vector{Int}(undef, 0)
+    band_inds_set = Vector{Vector{Int}}(undef, 0)
 
     for i = 1:length(exp_info.regions)
 
         tmp = filterfreqpositions(P_cost0, [exp_info.regions[i].st;], [exp_info.regions[i].fin;])
         push!(band_inds, tmp...)
+        push!(band_inds_set, tmp)
     end
 
     unique!(band_inds)
-    return band_inds
+    return band_inds, band_inds_set
 end
