@@ -4,7 +4,9 @@ authors = ["Roy <rwang013@uottawa.ca> and contributors"]
 version = "0.1.0"
 
 [deps]
+GISSMOReader = "fab8f492-3bcc-4cb4-9708-3e824b5a8279"
 LightGraphs = "093fc24a-ae57-5d10-9952-331d41423f4d"
+NMRSpectraSimulator = "2e4b1986-80aa-49f9-97f8-0783739fb47a"
 
 [compat]
 julia = "1"
