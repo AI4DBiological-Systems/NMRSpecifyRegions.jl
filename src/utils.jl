@@ -24,7 +24,7 @@ end
 """
 Returns a deepcopy of the Ωs components for each compound, and singlets.
 """
-function getΩS(As::Vector{NMRSpectraSimulator.CompoundFIDType{T}}) where T
+function getΩS(As::Vector{NMRSpectraSimulator.CompoundFIDType{T,SST}}) where {T,SST}
 
     N = length(As)
     ΩS = Vector{Vector{Vector{T}}}(undef, N)
