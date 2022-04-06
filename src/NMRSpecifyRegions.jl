@@ -3,9 +3,9 @@ module NMRSpecifyRegions
 # Write your package code here.
 
 # dependencies to NMRSpectraSimulator. Need to add explicitly since these packages are not on the Julia public registry.
-import GISSMOReader # https://github.com/AI4DBiological-Systems/GISSMOReader.jl
+#import GISSMOReader # https://github.com/AI4DBiological-Systems/GISSMOReader.jl
 
-import NMRSpectraSimulator # https://github.com/AI4DBiological-Systems/NMRSpectraSimulator.jl
+#import NMRSpectraSimulator # https://github.com/AI4DBiological-Systems/NMRSpectraSimulator.jl
 import LightGraphs
 
 include("../src/types.jl")

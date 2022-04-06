@@ -2,7 +2,6 @@
 
 import NMRDataSetup
 import NMRSpectraSimulator
-import NMRCalibrate
 
 include("../src/NMRSpecifyRegions.jl")
 import .NMRSpecifyRegions
@@ -63,7 +62,7 @@ offset_Hz = ν_0ppm - (ppm2hzfunc(0.3)-ppm2hzfunc(0.0))
 
 N = length(s_t)
 DFT_s = fft(s_t)
-U_DFT, U_y, U_inds = NMRCalibrate.getwraparoundDFTfreqs(N, fs, offset_Hz)
+U_DFT, U_y, U_inds = NMRDataSetup.getwraparoundDFTfreqs(N, fs, offset_Hz)
 
 Z = maximum(abs.(DFT_s))
 y = DFT_s[U_inds] ./ Z
@@ -90,15 +89,16 @@ PyPlot.title("data spectra, real part")
 
 Δcs_max_mixture = collect( Δcs_max for i = 1:length(molecule_names))
 
+dummy_SSFID = NMRSpectraSimulator.SpinSysFIDType1(0.0)
 mixture_params = NMRSpectraSimulator.setupmixtureproxies(molecule_names,
     base_path_JLD, Δcs_max_mixture, hz2ppmfunc, ppm2hzfunc, fs, SW, λ0,
-    ν_0ppm;
+    ν_0ppm, dummy_SSFID;
     tol_coherence = tol_coherence,
     α_relative_threshold = α_relative_threshold)
 As = mixture_params
 
 
-ΩS_ppm = NMRCalibrate.findfreqrange(As, hz2ppmfunc)
+ΩS_ppm = NMRSpectraSimulator.getPsnospininfo(As, hz2ppmfunc)
 ΩS_ppm_sorted = sort(NMRSpectraSimulator.combinevectors(ΩS_ppm))
 
 # u_min = ppm2hzfunc(-0.5)
@@ -133,8 +133,8 @@ cs_config_path = "/home/roy/MEGAsync/inputs/NMR/configs/cs_config_reduced.txt"
 cs_delta_group = NMRSpecifyRegions.extractinfofromconfig( cs_config_path, molecule_names)
 Δsys_cs = NMRSpecifyRegions.condenseΔcsconfig(cs_delta_group)
 
-ΩS0 = NMRSpecifyRegions.getΩS(As)
-ΩS0_ppm = NMRSpecifyRegions.getPs(ΩS0, hz2ppmfunc)
+ΩS0 = NMRSpectraSimulator.getΩS(As)
+ΩS0_ppm = NMRSpectraSimulator.getPs(ΩS0, hz2ppmfunc)
 exp_info = NMRSpecifyRegions.setupexperimentresults(molecule_names, ΩS0_ppm, Δsys_cs;
 min_dist = 0.1)
 
