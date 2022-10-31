@@ -21,7 +21,7 @@ end
 mutable struct ExperimentInfoType{T}
 
     regions::Vector{RegionInfoType{T}}
-    graph::LightGraphs.SimpleGraphs.SimpleGraph{Int}
+    graph::Graphs.SimpleGraphs.SimpleGraph{Int}
     connectivity::Vector{Vector{Int}}
 
     sts_set::Vector{Vector{Vector{T}}}

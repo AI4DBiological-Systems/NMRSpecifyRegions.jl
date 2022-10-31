@@ -45,7 +45,7 @@ function setupregioninfo(metabolite_regions,
 
     # get connected graph.
     sts_set, fins_set, IDs_set, G = processintervals(metabolite_regions, Δsys_border)
-    D0 = LightGraphs.connected_components(G)
+    D0 = Graphs.connected_components(G)
 
     sts = combinevectors(combinevectors(sts_set))
     fins = combinevectors(combinevectors(fins_set))
@@ -58,7 +58,7 @@ function setupregioninfo(metabolite_regions,
     D = D0[inds]
 
     # sanity-check.
-    @assert length(unique(combinevectors(D))) == LightGraphs.nv(G)
+    @assert length(unique(combinevectors(D))) == Graphs.nv(G)
 
     # schedule jobs.
     IDs = combinevectors(combinevectors(IDs_set))

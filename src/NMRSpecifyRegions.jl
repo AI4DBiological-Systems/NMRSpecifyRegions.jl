@@ -6,7 +6,7 @@ module NMRSpecifyRegions
 #import GISSMOReader # https://github.com/AI4DBiological-Systems/GISSMOReader.jl
 
 #import NMRSpectraSimulator # https://github.com/AI4DBiological-Systems/NMRSpectraSimulator.jl
-import LightGraphs
+import Graphs
 
 include("../src/types.jl")
 include("../src/utils.jl")

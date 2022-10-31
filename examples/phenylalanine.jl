@@ -3,9 +3,9 @@
 import NMRDataSetup
 import NMRSpectraSimulator
 
-include("../src/NMRSpecifyRegions.jl")
-import .NMRSpecifyRegions
-#import NMRSpecifyRegions
+#include("../src/NMRSpecifyRegions.jl")
+#import .NMRSpecifyRegions
+import NMRSpecifyRegions
 
 using LinearAlgebra
 using FFTW

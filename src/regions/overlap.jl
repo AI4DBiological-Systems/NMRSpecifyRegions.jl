@@ -55,7 +55,7 @@ function constructgraph(sts::Vector{T}, fins::Vector{T}) where T
 
     # construct graph.
     N_intervals = length(sts)
-    g = LightGraphs.SimpleGraph(N_intervals)
+    g = Graphs.SimpleGraph(N_intervals)
 
     for i = 1:N_intervals
         flags = isthereoverlap(sts[i], fins[i], sts, fins)
@@ -63,8 +63,8 @@ function constructgraph(sts::Vector{T}, fins::Vector{T}) where T
         for j = 1:length(flags)
             if flags[j]
                 #add edge i to j, j to i.
-                LightGraphs.add_edge!(g, i, j)
-                LightGraphs.add_edge!(g, j, i)
+                Graphs.add_edge!(g, i, j)
+                Graphs.add_edge!(g, j, i)
             end
         end
     end
