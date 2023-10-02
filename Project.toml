@@ -1,6 +1,7 @@
 name = "NMRSpecifyRegions"
 uuid = "2c6f6ba7-1a3c-4d31-8511-d336c09a6ae6"
-version = "0.1.0"
+authors = ["Roy Wang"]
+version = "0.1.1"
 
 [deps]
 Graphs = "86223c79-3864-5bf0-83f7-82e725a168b6"
